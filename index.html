@@ -3,50 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="Mypoin.js"></script>
 </head>
+<canvas id="myPoint" width="900" height="700" style="border: 1px solid pink"></canvas>
 <body>
-<canvas id="myCanvas" width="800" height="500" style="border: 10px solid green"></canvas>
 <script>
-    let canvas = document.getElementById('myCanvas');
-    let ctx = canvas.getContext('2d');
-    //Ve hinh tron,
-    ctx.beginPath();
-    ctx.strokeStyle = 'blue'
-    ctx.fillStyle = 'pink'
-    ctx.arc(400,250,100,0,2*Math.PI,true)
-    ctx.fill()
-    ctx.stroke()
-    ctx.closePath()
-    class Circle {
-        radius;
-        color;
-
-        constructor(radius, color) {
-            this.radius = radius;
-            this.color = color;
-        }
-
-        setRadius(radius) {
-            this.radius = radius
-        }
-
-        getRadius() {
-            return this.radius
-        }
-        setColor(color){
-            this.color =color
-        }
-        getColor(){
-            return this.color
-        }
-        getArea(){
-          return  this.radius*this.radius*Math.PI
-        }
+    let ctx=document.getElementById('myPoint').getContext('2d')
+    for (let i = 0; i < 20; i++) {
+        let radius= Math.floor(Math.random() * 80);
+        let x = Math.random() * 900+radius;
+        let y = Math.random() * 700+radius;
+        let red = Math.floor(Math.random()*255);
+        let green =  Math.floor(Math.random()*255);
+        let blue =  Math.floor(Math.random()*255);
+        let color= "rgb(" + red + "," + blue + "," + green +")";
+        let circle=new MyPoint(x,y,radius,color)
+        circle.drawCircle(ctx)
     }
-    let dt =new Circle(5,"red")
-    console.log(dt)
-     let dienTich=dt.getArea()
-    console.log(dienTich)
 </script>
 </body>
 </html>
